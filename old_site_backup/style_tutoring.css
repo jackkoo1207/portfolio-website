@@ -1,0 +1,20 @@
+
+/* CSS */
+html{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width:100%;
+    --banner-height:130px;
+    --header-height:50px;
+    --icon-height:50px;
+    --icon-width:40%;
+  }
+  body{
+    margin: 0;
+    padding:0;
+    background-color: white;
+    width:100%;
+    justify-content:center;
+    align-items: flex-start;
+  } 
