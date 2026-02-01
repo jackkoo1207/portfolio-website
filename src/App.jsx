@@ -10,7 +10,7 @@ function Home() {
     <Layout title="About Me">
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start', gap: '40px', flexWrap: 'wrap' }}>
         <div>
-          <img src="/icon.png" alt="Jack Cool" style={{ 
+          <img src="/portfolio-website/icon.png" alt="Jack Cool" style={{ 
             height: '200px', 
             width: '200px', 
             borderRadius: '50%', 
@@ -32,22 +32,22 @@ function Home() {
           <div style={{ display: 'flex', justifyContent: 'center', gap: '15px', margin: '20px 0', flexWrap: 'wrap' }}>
             <ContactIcon 
               href="mailto:hykoo@connect.ust.hk" 
-              src="/HKUST.png" 
+              src="/portfolio-website/HKUST.png" 
               alt="HKUST Email" 
             />
             <ContactIcon 
               href="https://www.instagram.com/jackkoo2.0/" 
-              src="/instagram.png" 
+              src="/portfolio-website/instagram.png" 
               alt="Instagram" 
             />
             <ContactIcon 
               href="https://github.com/jackkoo1207" 
-              src="/github.png" 
+              src="/portfolio-website/github.png" 
               alt="GitHub" 
             />
             <ContactIcon 
               href="https://www.linkedin.com/in/koo-ho-yin-7a1176210/" 
-              src="/Linklin.png" 
+              src="/portfolio-website/Linklin.png" 
               alt="LinkedIn" 
             />
           </div>
@@ -79,7 +79,7 @@ function Education() {
       <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', alignItems: 'stretch', gap: '30px', flexWrap: 'wrap' }}>
         <div style={{ flex: '1', minWidth: '250px', display: 'flex', alignItems: 'center' }}>
           <img 
-            src="public\HKUST2.png" 
+            src="/portfolio-website/HKUST2.png" 
             alt="HKUST Logo" 
             style={{ 
               width: '80%', 
@@ -110,7 +110,7 @@ function Education() {
        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', alignItems: 'stretch', gap: '30px', flexWrap: 'wrap' }}>
         <div style={{ flex: '1', minWidth: '250px', display: 'flex', alignItems: 'center' }}>
           <img 
-            src="public\NTU.png" 
+            src="/portfolio-website/NTU.png" 
             alt="NTU Logo" 
             style={{ 
               width: '50%', 
@@ -127,7 +127,7 @@ function Education() {
       <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', alignItems: 'stretch', gap: '30px', flexWrap: 'wrap' }}>
         <div style={{ flex: '1', minWidth: '250px', display: 'flex', alignItems: 'center' }}>
           <img 
-            src="public\FUB.png" 
+            src="/portfolio-website/FUB.png" 
             alt="FUB Logo" 
             style={{ 
               width: '50%', 
@@ -160,7 +160,7 @@ function WorkExperience() {
           </ul>
         </div>
         <div style={{ display: 'flex', justifyContent: 'center', margin: '20px 0' }}>
-          <img src="public\HKO.gif" style={{ width: '40%', height: '40%', objectFit: 'cover', display: 'block',borderRadius: '15px' }} />
+          <img src="/portfolio-website/HKO.gif" style={{ width: '40%', height: '40%', objectFit: 'cover', display: 'block',borderRadius: '15px' }} />
         </div>
         <div style={{ background: 'linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%)', color: '#2c3e50', borderRadius: '15px', padding: '30px', boxShadow: '0 8px 32px rgba(255, 154, 158, 0.3)' }}>
           <h2 style={{ fontSize: '2em', marginBottom: '10px' }}>Quantum Talent Accelerator: From Classical to Quantum Communication Network</h2>
@@ -173,7 +173,7 @@ function WorkExperience() {
           </ul>
         </div>
          <img 
-            src="public\QHED2.png" 
+            src="/portfolio-website/QHED2.png" 
             alt="Berry Phase" 
             style={{ 
               width: '700px', 
@@ -182,7 +182,7 @@ function WorkExperience() {
             }} 
           />
            <img 
-            src="public\QHED.png" 
+            src="/portfolio-website/QHED.png" 
             alt="Berry Phase" 
             style={{ 
               width: '700px', 
@@ -204,7 +204,7 @@ function WorkExperience() {
         
       </div>
       <img 
-            src="public\Berry_phase.png" 
+            src="/portfolio-website/Berry_phase.png" 
             alt="Berry Phase" 
             style={{ 
               width: '500px', 
@@ -213,7 +213,7 @@ function WorkExperience() {
             }} 
           />
           <img 
-            src="public\Berry_phase.jpg" 
+            src="/portfolio-website/Berry_phase.jpg" 
             alt="Berry Phase" 
             style={{ 
               width: '200px', 
@@ -241,7 +241,7 @@ function Research() {
         </div>
       </div>
        <img 
-            src="public\gs.gif" 
+            src="/portfolio-website/gs.gif" 
             alt="Berry Phase" 
             style={{ 
               width: '200px', 
@@ -280,7 +280,7 @@ function Research() {
         </div>
       </div>
        <img 
-            src="public\collective.png" 
+            src="/portfolio-website/collective.png" 
             alt="Berry Phase" 
             style={{ 
               width: '800px', 
@@ -304,7 +304,7 @@ function Research() {
       
       <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
         <img 
-          src="public\diffusion.png" 
+          src="/portfolio-website/diffusion.png" 
           alt="Diffusion Simulation 1" 
           style={{ 
             width: '700px', 
@@ -316,7 +316,7 @@ function Research() {
       
       <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
         <img 
-          src="public\diffusion2.jpeg" 
+          src="/portfolio-website/diffusion2.jpeg" 
           alt="Diffusion Simulation 2" 
           style={{ 
             width: '700px', 
@@ -339,7 +339,7 @@ function Research() {
       
       <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
         <img 
-          src="public\diffusion3.png" 
+          src="/portfolio-website/diffusion3.png" 
           alt="Diffusion Analysis" 
           style={{ 
             width: '500px', 
@@ -372,7 +372,7 @@ function Awards() {
 
 function App() {
   return (
-    <Router>
+    <Router basename="/portfolio-website">
       <div style={{ 
         minHeight: '100vh', 
         backgroundColor: 'white',
@@ -396,7 +396,7 @@ function App() {
           }
         `}</style>
         <div style={{ height: '130px', overflow: 'hidden', textAlign: 'center', margin: 0, padding: 0 }}>
-          <img src="/banner.gif" alt="Banner" style={{ width: '100%', height: '130px', objectFit: 'cover', display: 'block' }} />
+          <img src="/portfolio-website/banner.gif" alt="Banner" style={{ width: '100%', height: '130px', objectFit: 'cover', display: 'block' }} />
         </div>
         <main>
           <Routes>
