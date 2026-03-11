@@ -14,7 +14,7 @@ function Layout({ title, children }) {
         alignItems: 'center'
       }}>
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <img src="/favicon.png" alt="Icon" style={{ height: '40px', borderRadius: '50%', marginRight: '15px' }} />
+          <img src="/portfolio-website/favicon.png" alt="Icon" style={{ height: '40px', borderRadius: '50%', marginRight: '15px' }} />
           <Link to="/" style={{ 
             fontSize: '25px', 
             fontFamily: 'Pacifico, cursive',
