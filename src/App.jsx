@@ -62,10 +62,11 @@ function Home() {
           }}>
             <h4 style={{ marginBottom: '15px' }}>Introduction</h4>
             <p style={{ lineHeight: '1.6' }}>
-              I am currently an Undergraduate  student at HKUST. I am interested in qunatum computing, computational physics and machine learning.
-              I am passionate about exploring the intersection of these fields and their potential applications.
-              You can know more about me through my portfolio website.
-              </p>
+              Hi. I am Jack Koo, currently a final-year undergraduate student at HKUST. I have been interested in getting my hands dirty since I was a child. This motivated me to join a robotics team at HKUST called RoboMaster when I was a freshman.
+              At that time, I was a mechanical engineer who was responsible for building the robot chassis. By working with the software and hardware teams, I realised I was more interested in software development, where I could expand my creativity efficiently using code.
+              Now, I am having an internship at the Hong Kong Observatory as a website developer, where I am responsible for building an AI chatbot forecaster called Squid on the HKO website. It is capable of making weather predictions based on the reports from thousands of weather forecasters.
+              This experience solidified my interests as an LLM application engineer.
+              In my future career, I am looking forward to integrating AI into robotics, not only because of my strong interests in robotics and coding, but also because I believe that such physical AI is the way to make AI more accessible to the public, and I want to be part of this revolution.</p>
           </div>
         </div>
       </div>
@@ -148,19 +149,22 @@ function Education() {
 function WorkExperience() {
   return (
     <Layout title="Work Experience">
-      <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-        <div style={{ background: 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)', color: 'white', borderRadius: '15px', padding: '30px', marginBottom: '20px', boxShadow: '0 8px 32px rgba(17, 153, 142, 0.3)' }}>
-          <h2 style={{ fontSize: '2em', marginBottom: '10px' }}>Sector-based Significant Convection Forecast</h2>
+      <div style={{ color: '#000000',maxWidth: '800px', margin: '0 auto' }}>
+        <div style={{ background: 'linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%)', color: '#2c3e50', borderRadius: '15px', padding: '30px', marginBottom: '20px', boxShadow: '0 8px 32px rgba(17, 153, 142, 0.3)' }}>
+          <h2 style={{ fontSize: '2em', marginBottom: '10px' }}> AI weather forecaster chatbot</h2>
           <h3 style={{ fontSize: '1.4em', marginBottom: '5px', opacity: '0.9' }}>Hong Kong Observatory</h3>
-          <h2 style={{ fontSize: '1.4em', marginBottom: '5px' }}>Website Developer Intern</h2>
-          <p style={{ color: '#e0e0e0', fontWeight: 'bold', marginBottom: '20px' }}>2026 Jan-July</p>
+          <h2 style={{ fontSize: '1.4em', marginBottom: '5px' }}>Website Developer Intern, RAG application</h2>
+          <p style={{ color: '#000000', fontWeight: 'bold', marginBottom: '20px' }}>2026 Jan-July</p>
           <ul style={{ textAlign: 'left' }}>
-            <li>Developed web applications using HTML, CSS, JavaScript and PHP</li>
-            <li>It displays the radar images and the rainfall percentages </li>
+            <li><b>RAG chatbot:</b>Use Firebase to lanuch the website for answering queries about weather and visibility prediction</li>
+             <li><b>Database:</b> Use MongoDB for SQL queries and PineCone for vector embeddings simularity search</li>
+              <li><b>LLM API:</b> Use Deepseek V4-flash as the base model for LLM</li>
+             <li><b>Agentic AI:</b>The code generation is assisted by Openclaw </li>
+            <li><b>Data extraction:</b> Use pytesseract for OCR, whisper for transcription, other python tools to extract text from word, powerpoint and pdf files</li>
           </ul>
         </div>
         <div style={{ display: 'flex', justifyContent: 'center', margin: '20px 0' }}>
-          <img src="/portfolio-website/HKO.gif" style={{ width: '40%', height: '40%', objectFit: 'cover', display: 'block',borderRadius: '15px' }} />
+          <img src="/portfolio-website/Squid.png" style={{ width: '700px', height: '550px', objectFit: 'cover', display: 'block',borderRadius: '15px' }} />
         </div>
         <div style={{ background: 'linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%)', color: '#2c3e50', borderRadius: '15px', padding: '30px', boxShadow: '0 8px 32px rgba(255, 154, 158, 0.3)' }}>
           <h2 style={{ fontSize: '2em', marginBottom: '10px' }}>Quantum Talent Accelerator: From Classical to Quantum Communication Network</h2>
@@ -191,11 +195,11 @@ function WorkExperience() {
             }} 
           />
           
-           <div style={{ background: 'linear-gradient(135deg, #2c3e50 0%, #4a6741 100%)', color: 'white', borderRadius: '15px', padding: '30px', boxShadow: '0 8px 32px rgba(44, 62, 80, 0.3)' }}>
+           <div style={{ background: 'linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%)', color: '#2c3e50', borderRadius: '15px', padding: '30px', boxShadow: '0 8px 32px rgba(44, 62, 80, 0.3)' }}>
           <h2 style={{ fontSize: '2em', marginBottom: '10px' }}>Quantum Quest: Practical Experience for Gifted Students</h2>
-          <h3 style={{ fontSize: '1.4em', marginBottom: '5px', opacity: '0.9', color: '#ecf0f1' }}>Hong Kong Academy of Gifted Education</h3>
-          <h3 style={{ fontSize: '1.4em', marginBottom: '5px', opacity: '0.9', color: '#ecf0f1' }}>Mentor</h3>
-          <p style={{ color: '#bdc3c7', fontWeight: 'bold', marginBottom: '20px' }}>2024 Sep</p>
+          <h3 style={{ fontSize: '1.4em', marginBottom: '5px', opacity: '0.9',color: '#2c3e50' }}>Hong Kong Academy of Gifted Education</h3>
+          <h3 style={{ fontSize: '1.4em', marginBottom: '5px', opacity: '0.9', color: '#2c3e50' }}>Mentor</h3>
+          <p style={{ color: '#2c3e50', fontWeight: 'bold', marginBottom: '20px' }}>2024 Sep</p>
           <ul style={{ textAlign: 'left' }}>
             <li>Teach high school students basic concepts of quantum mechanics and Berry phase</li>
             <li>Teach them how to use lab equipment (e.g. optical fibre) and standard scientific computing software (numpy, matplotlib, scipy)</li>
@@ -221,6 +225,52 @@ function WorkExperience() {
               borderRadius: '10px'
             }} 
           /> 
+ <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+        <div style={{ background: 'linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%)', color: '#2c3e50', borderRadius: '15px', padding: '30px', marginBottom: '20px', boxShadow: '0 8px 32px rgba(142, 68, 173, 0.3)' }}>
+          <h2 style={{  fontSize: '2em', marginBottom: '10px' }}>Robotics team member</h2>
+          <p style={{ fontWeight: 'bold', marginBottom: '15px' }}>2022 - 2023</p>
+         <ul style={{ textAlign: 'left',  fontSize: '1.1em', lineHeight: '1.6', marginBottom: '20px' }}>
+            <li>Joined as a member of the robotics team called <b>Robomaster</b></li>
+            <li><b>Champion team</b> for the selection process of the team members</li>
+            <li>Participated in the CAD design of the robotic cars</li>
+            <li>Collaborated with other software and hardware teams to build the robotic systems</li>
+          </ul>
+        </div>
+      </div>
+     <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
+        <img 
+          src="/portfolio-website/CAD.png" 
+          alt="CAD Design" 
+          style={{ 
+            width: '700px', 
+            height: '300px', 
+            borderRadius: '10px'
+          }} 
+        /> 
+      </div> 
+      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
+        <img 
+          src="/portfolio-website/Construction.png" 
+          alt="Construction" 
+          style={{ 
+            width: '700px', 
+            height: '400px', 
+            borderRadius: '10px'
+          }} 
+        /> 
+      </div> 
+      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
+        <img 
+          src="/portfolio-website/Robomaster.jpg" 
+          alt="Robomaster" 
+          style={{ 
+            width: '700px', 
+            height: '400px', 
+            borderRadius: '10px'
+          }} 
+        /> 
+      </div> 
+
     </Layout>
   );
 }
@@ -249,6 +299,7 @@ function Research() {
               borderRadius: '10px'
             }} 
           /> 
+     
       <div style={{ maxWidth: '800px', margin: '0 auto' }}>
         <div style={{ background: 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)', borderRadius: '15px', padding: '30px', marginBottom: '20px', boxShadow: '0 8px 32px rgba(17, 153, 142, 0.3)' }}>
           <h2 style={{ color: '#ffffff', fontSize: '2em', marginBottom: '10px' }}>Moiré Graphene</h2>
@@ -264,21 +315,22 @@ function Research() {
           </ul>
         </div>
       </div>
-      
+            **/
        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
         <div style={{ background: 'linear-gradient(135deg, #ff6b6b 0%, #ffa500 100%)', borderRadius: '15px', padding: '30px', marginBottom: '20px', boxShadow: '0 8px 32px rgba(255, 107, 107, 0.3)' }}>
           <h2 style={{ color: '#ffffff', fontSize: '2em', marginBottom: '10px' }}>Physics-guided data-driven modeling to understand complex phenomena and to solve real-world problems</h2>
           <p style={{ color: '#fff2e6', fontWeight: 'bold', marginBottom: '15px' }}>2025 - 2026</p>
           <p style={{ color: '#ffe0cc', fontWeight: 'bold', marginBottom: '10px' }}>Supervisor: Professor Zhang Rui, Professor Li Sai Ping</p>
           <ul style={{ textAlign: 'left', color: '#ffffff', fontSize: '1.1em', lineHeight: '1.6', marginBottom: '20px' }}>
-            <li>Investigating the swarming behavior of zebrafish and applying such swarming strategies to robotic swarms</li>
             <li>Trained a supervised multi-agent reinforcement learning model based on zebrafish video data</li>
             <li>Collaborated with the robotics engineering department to develop a robotic fish that applies the machine learning model</li>
             <li>Secured funding from the Undergraduate Research Opportunities Program (UROP) to support the research project</li>
           </ul>
          
         </div>
-      </div>
+
+      </div> 
+      
        <img 
             src="/portfolio-website/collective.png" 
             alt="Berry Phase" 
@@ -301,7 +353,7 @@ function Research() {
          
         </div>
       </div>
-      
+       
       <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
         <img 
           src="/portfolio-website/diffusion.png" 
@@ -325,6 +377,7 @@ function Research() {
           }} 
         /> 
       </div> 
+    
        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
         <div style={{ background: 'linear-gradient(135deg, #8e44ad 0%, #e74c3c 100%)', borderRadius: '15px', padding: '30px', marginBottom: '20px', boxShadow: '0 8px 32px rgba(142, 68, 173, 0.3)' }}>
           <h2 style={{ color: '#ffffff', fontSize: '2em', marginBottom: '10px' }}>Theoretical modeling of energy wall</h2>
@@ -337,17 +390,7 @@ function Research() {
         </div>
       </div>
       
-      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
-        <img 
-          src="/portfolio-website/diffusion3.png" 
-          alt="Diffusion Analysis" 
-          style={{ 
-            width: '500px', 
-            height: '200px', 
-            borderRadius: '10px'
-          }} 
-        /> 
-      </div> 
+
     </Layout>
   );
 }

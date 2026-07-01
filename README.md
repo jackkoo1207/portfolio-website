@@ -71,13 +71,6 @@ npm run deploy
 
 This will build the project and push to the `gh-pages` branch.
 
-## 📞 Contact
-
-- **Email**: hykoo@connect.ust.hk
-- **LinkedIn**: [Koo Ho Yin](https://www.linkedin.com/in/koo-ho-yin-7a1176210/)
-- **GitHub**: [jackkoo1207](https://github.com/jackkoo1207)
-- **Instagram**: [@jackkoo6](https://www.instagram.com/jackkoo6/)
-
 ---
 
 Built with ❤️ by Jack Cool
