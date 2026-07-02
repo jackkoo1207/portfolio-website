@@ -9,6 +9,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Comforter+Brush&display=swap" rel="stylesheet">
     
+    <!-- SPA redirect handler for GitHub Pages direct URL access -->
+    <script>
+      (function() {
+        var params = new URLSearchParams(window.location.search);
+        var redirect = params.get('redirect');
+        if (redirect) {
+          history.replaceState(null, null, '/portfolio-website' + redirect);
+        }
+      })();
+    </script>
+    
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-E55S4NV41B"></script>
     <script>
