@@ -34,12 +34,12 @@ function Layout({ title, children }) {
           <Link to="/education" style={{ color: 'white', marginRight: '20px', textDecoration: 'none', fontFamily: 'monospace', transition: 'color 0.3s ease' }}
             onMouseEnter={(e) => { e.target.style.color = '#278405'; }}
             onMouseLeave={(e) => { e.target.style.color = 'white'; }}>Education</Link>
-          <Link to="/work-experience" style={{ color: 'white', marginRight: '20px', textDecoration: 'none', fontFamily: 'monospace', transition: 'color 0.3s ease' }}
+          <Link to="/about-me" style={{ color: 'white', marginRight: '20px', textDecoration: 'none', fontFamily: 'monospace', transition: 'color 0.3s ease' }}
             onMouseEnter={(e) => { e.target.style.color = '#278405'; }}
-            onMouseLeave={(e) => { e.target.style.color = 'white'; }}>Work Experience</Link>
-          <Link to="/research" style={{ color: 'white', marginRight: '20px', textDecoration: 'none', fontFamily: 'monospace', transition: 'color 0.3s ease' }}
+            onMouseLeave={(e) => { e.target.style.color = 'white'; }}>About Me</Link>
+          <Link to="/projects" style={{ color: 'white', marginRight: '20px', textDecoration: 'none', fontFamily: 'monospace', transition: 'color 0.3s ease' }}
             onMouseEnter={(e) => { e.target.style.color = '#278405'; }}
-            onMouseLeave={(e) => { e.target.style.color = 'white'; }}>Research</Link>
+            onMouseLeave={(e) => { e.target.style.color = 'white'; }}>Projects</Link>
           <Link to="/awards" style={{ color: 'white', textDecoration: 'none', fontFamily: 'monospace', transition: 'color 0.3s ease' }}
             onMouseEnter={(e) => { e.target.style.color = '#278405'; }}
             onMouseLeave={(e) => { e.target.style.color = 'white'; }}>Awards</Link>

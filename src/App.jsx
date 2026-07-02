@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useNavigate, useParams } from 'react-router-dom';
 import Layout from './components/Layout';
 import ContactIcon from './components/ContactIcon';
 
@@ -7,29 +7,206 @@ import ContactIcon from './components/ContactIcon';
 
 function Home() {
   return (
-    <Layout title="About Me">
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start', gap: '40px', flexWrap: 'wrap' }}>
-        <div>
-          <img src="/portfolio-website/icon.png" alt="Jack Cool" style={{ 
-            height: '200px', 
-            width: '200px', 
-            borderRadius: '50%', 
-            objectFit: 'cover',
-            boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
-            border: '3px solid black',
-            transition: 'transform 0.3s ease, box-shadow 0.3s ease'
-          }} 
-          />
+    <Layout title="Home">
+      <div style={{ maxWidth: '700px', margin: '0 auto', textAlign: 'center' }}>
+        <img src="/portfolio-website/icon.png" alt="Jack Cool" style={{ 
+          height: '200px', 
+          width: '200px', 
+          borderRadius: '50%', 
+          objectFit: 'cover',
+          boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
+          border: '3px solid black',
+          marginBottom: '24px',
+          transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+        }} 
+        />
+        <h2 style={{ fontSize: '2.5em', marginBottom: '16px' }}>
+          Hi, I'm Koo Ho yin, <span style={{ fontFamily: 'Pacifico, cursive', color: '#278405' }}>Jack</span>
+        </h2>
+        <p style={{ fontSize: '1.2em', color: '#555', lineHeight: '1.7', marginBottom: '30px' }}>
+          I am a passionate developer interested in AI-integrated web applications, Agentic AI and robotics.
+          Currently pursuing CS & Physics & AI at HKUST. Welcome to my portfolio!
+        </p>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
+          <Link
+            to="/about-me"
+            style={{
+              padding: '12px 28px',
+              background: '#278405',
+              color: '#fff',
+              textDecoration: 'none',
+              borderRadius: '8px',
+              fontWeight: 600,
+              fontSize: '15px',
+              transition: 'transform 0.2s, box-shadow 0.2s',
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.transform = 'scale(1.05)';
+              e.target.style.boxShadow = '0 4px 16px rgba(39,132,5,0.3)';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.transform = 'scale(1)';
+              e.target.style.boxShadow = 'none';
+            }}
+          >
+            About Me
+          </Link>
+          <Link
+            to="/projects"
+            style={{
+              padding: '12px 28px',
+              border: '2px solid #333',
+              color: '#333',
+              textDecoration: 'none',
+              borderRadius: '8px',
+              fontWeight: 600,
+              fontSize: '15px',
+              transition: 'transform 0.2s',
+            }}
+            onMouseEnter={(e) => { e.target.style.transform = 'scale(1.05)'; }}
+            onMouseLeave={(e) => { e.target.style.transform = 'scale(1)'; }}
+          >
+            View Projects
+          </Link>
         </div>
+      </div>
+    </Layout>
+  );
+}
+
+function AboutMe() {
+  return (
+    <Layout title="About Me">
+      <div style={{ maxWidth: '800px', margin: '0 auto' }}>
         
-        <div style={{ maxWidth: '500px', textAlign: 'center' }}>
-          <h2 style={{ fontSize: '2em', marginBottom: '10px' }}>
-            Koo Ho yin, <span style={{ fontFamily: 'Pacifico, cursive', color: 'black' }}>Jack</span>
-          </h2>
-          <p style={{ fontSize: '1.2em', marginBottom: '20px' }}>UG CS & Phys & AI - HKUST</p>
+        {/* Header: Photo + Greeting */}
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '40px', flexWrap: 'wrap', marginBottom: '36px' }}>
+          <div>
+            <img src="/portfolio-website/icon.png" alt="Jack Cool" style={{ 
+              height: '200px', 
+              width: '200px', 
+              borderRadius: '50%', 
+              objectFit: 'cover',
+              boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
+              border: '3px solid black',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease'
+            }} 
+            />
+          </div>
+          <div style={{ maxWidth: '400px', textAlign: 'left' }}>
+            <h2 style={{ fontSize: '1.8em', marginBottom: '6px' }}>
+              Hi, I'm <span style={{ fontFamily: 'Pacifico, cursive', color: '#278405' }}>Jack Koo</span>
+            </h2>
+            <p style={{ fontSize: '1em', color: '#666', lineHeight: '1.6' }}>
+              I have been interested in getting my hands dirty since I was a child.
+            </p>
+          </div>
+        </div>
+
+        {/* Journey Timeline */}
+        <div style={{ textAlign: 'left' }}>
           
-          <h3>Contact:</h3>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '15px', margin: '20px 0', flexWrap: 'wrap' }}>
+          <div style={{
+            borderLeft: '3px solid #278405',
+            paddingLeft: '20px',
+            marginBottom: '28px',
+            position: 'relative',
+          }}>
+            <div style={{
+              position: 'absolute',
+              left: '-8px',
+              top: '4px',
+              width: '13px',
+              height: '13px',
+              borderRadius: '50%',
+              background: '#278405',
+            }} />
+            <h3 style={{ fontSize: '1.1em', fontWeight: 700, color: '#1a1a1a', marginBottom: '6px' }}>
+              🤖 Freshman — RoboMaster Robotics Team
+            </h3>
+            <p style={{ fontSize: '0.95em', color: '#555', lineHeight: '1.7', margin: 0 }}>
+              This motivated me to join a robotics team at HKUST called RoboMaster when I was a freshman.
+              At that time, I was a mechanical engineer who was responsible for building the robot chassis.
+            </p>
+          </div>
+
+          <div style={{
+            borderLeft: '3px solid #278405',
+            paddingLeft: '20px',
+            marginBottom: '28px',
+            position: 'relative',
+          }}>
+            <div style={{
+              position: 'absolute',
+              left: '-8px',
+              top: '4px',
+              width: '13px',
+              height: '13px',
+              borderRadius: '50%',
+              background: '#278405',
+            }} />
+            <h3 style={{ fontSize: '1.1em', fontWeight: 700, color: '#1a1a1a', marginBottom: '6px' }}>
+              💻 Shift to Software — AI & Robotics Research
+            </h3>
+            <p style={{ fontSize: '0.95em', color: '#555', lineHeight: '1.7', margin: 0 }}>
+              By working with the software and hardware teams, I realised I was more interested in software development, where I could expand my creativity efficiently using code.
+              Previously, I have been working on some AI projects, including a multi-agent reinforcement learning model for simulating robotic swarms and collaborated with the robotics team to build a robotic fish that applies the model.
+            </p>
+          </div>
+
+          <div style={{
+            borderLeft: '3px solid #278405',
+            paddingLeft: '20px',
+            marginBottom: '28px',
+            position: 'relative',
+          }}>
+            <div style={{
+              position: 'absolute',
+              left: '-8px',
+              top: '4px',
+              width: '13px',
+              height: '13px',
+              borderRadius: '50%',
+              background: '#278405',
+            }} />
+            <h3 style={{ fontSize: '1.1em', fontWeight: 700, color: '#1a1a1a', marginBottom: '6px' }}>
+              🌤️ Internship — HKO AI Chatbot (Squid)
+            </h3>
+            <p style={{ fontSize: '0.95em', color: '#555', lineHeight: '1.7', margin: 0 }}>
+              Now, I am having an internship at the Hong Kong Observatory as a website developer, where I am responsible for building an AI chatbot forecaster called Squid on the HKO website. It is capable of making weather predictions based on the reports from thousands of weather forecasters.
+              This experience solidified my interests as an LLM application engineer.
+            </p>
+          </div>
+
+          <div style={{
+            borderLeft: '3px solid #278405',
+            paddingLeft: '20px',
+            marginBottom: '32px',
+            position: 'relative',
+          }}>
+            <div style={{
+              position: 'absolute',
+              left: '-8px',
+              top: '4px',
+              width: '13px',
+              height: '13px',
+              borderRadius: '50%',
+              background: '#278405',
+            }} />
+            <h3 style={{ fontSize: '1.1em', fontWeight: 700, color: '#1a1a1a', marginBottom: '6px' }}>
+              🚀 Future — Physical AI & Robotics
+            </h3>
+            <p style={{ fontSize: '0.95em', color: '#555', lineHeight: '1.7', margin: 0 }}>
+              In my future career, I am looking forward to integrating AI into robotics, not only because of my strong interests in robotics and coding, but also because I believe that such physical AI is the way to make AI more accessible to the public, and I want to be part of this revolution.
+            </p>
+          </div>
+
+        </div>
+
+        {/* Contact */}
+        <div style={{ textAlign: 'center', borderTop: '1px solid #e5e7eb', paddingTop: '24px' }}>
+          <h3 style={{ fontSize: '1.1em', fontWeight: 600, color: '#333', marginBottom: '14px' }}>Contact:</h3>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '15px', flexWrap: 'wrap' }}>
             <ContactIcon 
               href="mailto:hykoo@connect.ust.hk" 
               src="/portfolio-website/HKUST.png" 
@@ -51,362 +228,676 @@ function Home() {
               alt="LinkedIn" 
             />
           </div>
-          
-          <div style={{ 
-            textAlign: 'left', 
-            marginTop: '30px', 
-            padding: '20px', 
-            backgroundColor: '#f9f9f9', 
-            borderRadius: '10px',
-            borderLeft: '4px solid #278405'
-          }}>
-            <h4 style={{ marginBottom: '15px' }}>Introduction</h4>
-            <p style={{ lineHeight: '1.6' }}>
-              Hi. I am Jack Koo, currently a final-year undergraduate student at HKUST. I have been interested in getting my hands dirty since I was a child. This motivated me to join a robotics team at HKUST called RoboMaster when I was a freshman.
-              At that time, I was a mechanical engineer who was responsible for building the robot chassis. By working with the software and hardware teams, I realised I was more interested in software development, where I could expand my creativity efficiently using code.
-              Now, I am having an internship at the Hong Kong Observatory as a website developer, where I am responsible for building an AI chatbot forecaster called Squid on the HKO website. It is capable of making weather predictions based on the reports from thousands of weather forecasters.
-              This experience solidified my interests as an LLM application engineer.
-              In my future career, I am looking forward to integrating AI into robotics, not only because of my strong interests in robotics and coding, but also because I believe that such physical AI is the way to make AI more accessible to the public, and I want to be part of this revolution.</p>
-          </div>
         </div>
+
       </div>
     </Layout>
   );
 }
 
 function Education() {
+  const education = [
+    {
+      logo: '/portfolio-website/HKUST2.png',
+      logoWidth: '100%',
+      school: 'Hong Kong University of Science and Technology',
+      degree: "Bachelor's Degree",
+      period: '2022 – 2026',
+      details: [
+        { label: '1st Major', value: 'Computer Science and Engineering' },
+        { label: 'Extended Major', value: 'Artificial Intelligence' },
+        { label: '2nd Major', value: 'Physics (Honors Option)' },
+        { label: 'Minor', value: 'Mathematics' },
+      ],
+      color: '#6c5ce7',
+    },
+    {
+      logo: '/portfolio-website/NTU.png',
+      logoWidth: '90%',
+      school: 'Nanyang Technological University',
+      degree: 'Summer Exchange',
+      period: '2025 Summer',
+      details: [
+        { label: 'Program', value: 'Overseas Exchange Semester' },
+      ],
+      color: '#0984e3',
+    },
+    {
+      logo: '/portfolio-website/FUB.png',
+      logoWidth: '90%',
+      school: 'Freie Universität Berlin',
+      degree: 'Winter Exchange',
+      period: '2026 Winter',
+      details: [
+        { label: 'Program', value: 'Overseas Exchange Semester' },
+      ],
+      color: '#e17055',
+    },
+  ];
+
   return (
     <Layout title="Education">
-      <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', alignItems: 'stretch', gap: '30px', flexWrap: 'wrap' }}>
-        <div style={{ flex: '1', minWidth: '250px', display: 'flex', alignItems: 'center' }}>
-          <img 
-            src="/portfolio-website/HKUST2.png" 
-            alt="HKUST Logo" 
-            style={{ 
-              width: '80%', 
-              height: '100%', 
-              
-              borderRadius: '10px'
-            }} 
-          />
-        </div>
-        <div style={{ flex: '1', minWidth: '300px', padding: '30px', background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)', borderRadius: '15px', display: 'flex', flexDirection: 'column', justifyContent: 'center', textAlign: 'center' }}>
-          <h2 style={{ color: '', fontSize: '2em', marginBottom: '10px' }}>Bachelor's Degree: HKUST</h2>
-    
-          <p style={{ color: '#777', fontWeight: 'bold', fontSize: '1.1em', marginBottom: '25px' }}>2022-2026</p>
-          
-          <div style={{ textAlign: 'left', marginTop: '25px' }}>
-            <ul style={{ listStyleType: 'disc', paddingLeft: '20px', lineHeight: '1.8' }}>
-              <li><span style={{color:'#000', fontWeight: 'bold'}}>1st major:</span> Computer Science and Engineering
-                <div style={{ marginLeft: '20px' }}>
-                  <span style={{color:'#000', fontWeight: 'bold'}}>Extended major:</span> Artificial Intelligence
+      <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'left' }}>
+        {education.map((item, i) => (
+          <div
+            key={i}
+            style={{
+              display: 'flex',
+              gap: '30px',
+              alignItems: 'stretch',
+              marginBottom: i < education.length - 1 ? '32px' : 0,
+              position: 'relative',
+            }}
+          >
+            {/* Timeline connector */}
+            {i < education.length - 1 && (
+              <div style={{
+                position: 'absolute',
+                left: '80px',
+                top: '100px',
+                bottom: '-32px',
+                width: '2px',
+                background: '#e5e7eb',
+                zIndex: 0,
+              }} />
+            )}
+
+            {/* Logo column */}
+            <div style={{
+              flex: '0 0 160px',
+              display: 'flex',
+              alignItems: 'stretch',
+              zIndex: 1,
+            }}>
+              <div style={{
+                width: '100%',
+                borderRadius: '16px',
+                background: '#fff',
+                border: '1px solid #e5e7eb',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: '20px',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+              }}>
+                <img
+                  src={item.logo}
+                  alt={item.school}
+                  style={{
+                    width: item.logoWidth,
+                    height: 'auto',
+                    display: 'block',
+                  }}
+                />
+              </div>
+            </div>
+
+            {/* Content card */}
+            <div style={{
+              flex: 1,
+              background: '#ffffff',
+              borderRadius: '16px',
+              padding: '28px 32px',
+              color: '#1a1a1a',
+              border: '1px solid #d1d5db',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease',
+            }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-3px)';
+                e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.1)';
+                e.currentTarget.style.borderColor = '#9ca3af';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.06)';
+                e.currentTarget.style.borderColor = '#d1d5db';
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: '12px', flexWrap: 'wrap', marginBottom: '6px' }}>
+                <h3 style={{ fontSize: '1.2em', fontWeight: 700, color: '#1a1a1a', margin: 0 }}>
+                  {item.degree}
+                </h3>
+                <span style={{ fontSize: '0.85em', color: '#888', fontWeight: 500 }}>
+                  {item.period}
+                </span>
+              </div>
+              <p style={{ fontSize: '0.95em', color: '#666', fontWeight: 500, margin: '0 0 14px' }}>
+                {item.school}
+              </p>
+
+              {item.details.length > 0 && (
+                <div style={{
+                  background: '#f3f4f6',
+                  borderRadius: '10px',
+                  padding: '14px 18px',
+                }}>
+                  {item.details.map((d, j) => (
+                    <div key={j} style={{
+                      display: 'flex',
+                      gap: '8px',
+                      fontSize: '0.9em',
+                      lineHeight: '1.6',
+                      color: '#333',
+                      marginBottom: j < item.details.length - 1 ? '4px' : 0,
+                    }}>
+                      <span style={{ fontWeight: 700, whiteSpace: 'nowrap' }}>{d.label}:</span>
+                      <span>{d.value}</span>
+                    </div>
+                  ))}
                 </div>
-              </li>
-              <li><span style={{color:'#000', fontWeight: 'bold'}}>2nd major:</span>  Physics (Honors Option)</li>
-              <li><span style={{color:'#000', fontWeight: 'bold'}}>Minor:</span> Mathematics</li>
-            </ul>
+              )}
+            </div>
           </div>
-        </div>
-      </div>
-       <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', alignItems: 'stretch', gap: '30px', flexWrap: 'wrap' }}>
-        <div style={{ flex: '1', minWidth: '250px', display: 'flex', alignItems: 'center' }}>
-          <img 
-            src="/portfolio-website/NTU.png" 
-            alt="NTU Logo" 
-            style={{ 
-              width: '50%', 
-              height: '100%', 
-              
-              borderRadius: '10px'
-            }} 
-          />
-        </div>
-        <div style={{ flex: '1', minWidth: '300px', padding: '30px', background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)', borderRadius: '15px', display: 'flex', flexDirection: 'column', justifyContent: 'center', textAlign: 'center' }}>
-          <h2 style={{ color: '', fontSize: '2em', marginBottom: '10px' }}>2025 Summer Exchange: NTU(Singapore)</h2>
-        </div>
-      </div>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', alignItems: 'stretch', gap: '30px', flexWrap: 'wrap' }}>
-        <div style={{ flex: '1', minWidth: '250px', display: 'flex', alignItems: 'center' }}>
-          <img 
-            src="/portfolio-website/FUB.png" 
-            alt="FUB Logo" 
-            style={{ 
-              width: '50%', 
-              height: '100%', 
-              
-              borderRadius: '10px'
-            }} 
-          />
-        </div>
-        <div style={{ flex: '1', minWidth: '300px', padding: '30px', background: 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)', borderRadius: '15px', display: 'flex', flexDirection: 'column', justifyContent: 'center', textAlign: 'center' }}>
-          <h2 style={{ color: '', fontSize: '2em', marginBottom: '10px' }}>2026 Winter Exchange: FUB(Germany)</h2>
-        </div>
+        ))}
       </div>
     </Layout>
   );
 }
 
-function WorkExperience() {
+function ProjectsCard({ id, image, title, description }) {
+  const navigate = useNavigate();
+  const [hovered, setHovered] = React.useState(false);
   return (
-    <Layout title="Work Experience">
-      <div style={{ color: '#000000',maxWidth: '800px', margin: '0 auto' }}>
-        <div style={{ background: 'linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%)', color: '#2c3e50', borderRadius: '15px', padding: '30px', marginBottom: '20px', boxShadow: '0 8px 32px rgba(17, 153, 142, 0.3)' }}>
-          <h2 style={{ fontSize: '2em', marginBottom: '10px' }}> AI weather forecaster chatbot</h2>
-          <h3 style={{ fontSize: '1.4em', marginBottom: '5px', opacity: '0.9' }}>Hong Kong Observatory</h3>
-          <h2 style={{ fontSize: '1.4em', marginBottom: '5px' }}>Website Developer Intern, RAG application</h2>
-          <p style={{ color: '#000000', fontWeight: 'bold', marginBottom: '20px' }}>2026 Jan-July</p>
-          <ul style={{ textAlign: 'left' }}>
-            <li><b>RAG chatbot:</b>Use Firebase to lanuch the website for answering queries about weather and visibility prediction</li>
-             <li><b>Database:</b> Use MongoDB for SQL queries and PineCone for vector embeddings simularity search</li>
-              <li><b>LLM API:</b> Use Deepseek V4-flash as the base model for LLM</li>
-             <li><b>Agentic AI:</b>The code generation is assisted by Openclaw </li>
-            <li><b>Data extraction:</b> Use pytesseract for OCR, whisper for transcription, other python tools to extract text from word, powerpoint and pdf files</li>
-          </ul>
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'center', margin: '20px 0' }}>
-          <img src="/portfolio-website/Squid.png" style={{ width: '700px', height: '550px', objectFit: 'cover', display: 'block',borderRadius: '15px' }} />
-        </div>
-        <div style={{ background: 'linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%)', color: '#2c3e50', borderRadius: '15px', padding: '30px', boxShadow: '0 8px 32px rgba(255, 154, 158, 0.3)' }}>
-          <h2 style={{ fontSize: '2em', marginBottom: '10px' }}>Quantum Talent Accelerator: From Classical to Quantum Communication Network</h2>
-          <h3 style={{ fontSize: '1.4em', marginBottom: '5px', opacity: '0.8', color: '#2c3e50' }}>Hong Kong Academy of Gifted Education</h3>
-          <h3 style={{ fontSize: '1.4em', marginBottom: '5px', opacity: '0.8', color: '#2c3e50' }}>Mentor</h3>
-          <p style={{ color: '#34495e', fontWeight: 'bold', marginBottom: '20px' }}>2025 Sep </p>
-          <ul style={{ textAlign: 'left' }}>
-            <li>Teach high school students basic concepts of quantum computing and image processing</li>
-            <li>Teach them how to use quantum computing software(qiskit)</li>
-          </ul>
-        </div>
-         <img 
-            src="/portfolio-website/QHED2.png" 
-            alt="Berry Phase" 
-            style={{ 
-              width: '700px', 
-              height: '100%', 
-              borderRadius: '10px'
-            }} 
-          />
-           <img 
-            src="/portfolio-website/QHED.png" 
-            alt="Berry Phase" 
-            style={{ 
-              width: '700px', 
-              height: '100%', 
-              borderRadius: '10px'
-            }} 
-          />
-          
-           <div style={{ background: 'linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%)', color: '#2c3e50', borderRadius: '15px', padding: '30px', boxShadow: '0 8px 32px rgba(44, 62, 80, 0.3)' }}>
-          <h2 style={{ fontSize: '2em', marginBottom: '10px' }}>Quantum Quest: Practical Experience for Gifted Students</h2>
-          <h3 style={{ fontSize: '1.4em', marginBottom: '5px', opacity: '0.9',color: '#2c3e50' }}>Hong Kong Academy of Gifted Education</h3>
-          <h3 style={{ fontSize: '1.4em', marginBottom: '5px', opacity: '0.9', color: '#2c3e50' }}>Mentor</h3>
-          <p style={{ color: '#2c3e50', fontWeight: 'bold', marginBottom: '20px' }}>2024 Sep</p>
-          <ul style={{ textAlign: 'left' }}>
-            <li>Teach high school students basic concepts of quantum mechanics and Berry phase</li>
-            <li>Teach them how to use lab equipment (e.g. optical fibre) and standard scientific computing software (numpy, matplotlib, scipy)</li>
-          </ul>
-        </div>
-        
+    <div
+      onClick={() => navigate(`/projects/${id}`)}
+      style={{
+        position: 'relative',
+        display: 'flex',
+        flexDirection: 'column',
+        borderRadius: '16px',
+        padding: '24px 20px',
+        transition: 'all 0.3s ease-out',
+        transform: hovered ? 'translate(-2px, -2px)' : 'none',
+        textDecoration: 'none',
+        color: 'inherit',
+        border: '1px solid',
+        borderColor: hovered ? '#bbb' : '#e5e7eb',
+        background: hovered ? '#fff' : '#fafafa',
+        cursor: 'pointer',
+      }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      {/* Image */}
+      <div
+        style={{
+          width: '100%',
+          aspectRatio: '16 / 9',
+          borderRadius: '10px',
+          overflow: 'hidden',
+          background: '#f0f0f0',
+        }}
+      >
+        <img
+          src={image}
+          alt={title}
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            display: 'block',
+          }}
+        />
       </div>
-      <img 
-            src="/portfolio-website/Berry_phase.png" 
-            alt="Berry Phase" 
-            style={{ 
-              width: '500px', 
-              height: '300px', 
-              borderRadius: '10px'
-            }} 
-          />
-          <img 
-            src="/portfolio-website/Berry_phase.jpg" 
-            alt="Berry Phase" 
-            style={{ 
-              width: '200px', 
-              height: '300px', 
-              borderRadius: '10px'
-            }} 
-          /> 
- <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-        <div style={{ background: 'linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%)', color: '#2c3e50', borderRadius: '15px', padding: '30px', marginBottom: '20px', boxShadow: '0 8px 32px rgba(142, 68, 173, 0.3)' }}>
-          <h2 style={{  fontSize: '2em', marginBottom: '10px' }}>Robotics team member</h2>
-          <p style={{ fontWeight: 'bold', marginBottom: '15px' }}>2022 - 2023</p>
-         <ul style={{ textAlign: 'left',  fontSize: '1.1em', lineHeight: '1.6', marginBottom: '20px' }}>
-            <li>Joined as a member of the robotics team called <b>Robomaster</b></li>
-            <li><b>Champion team</b> for the selection process of the team members</li>
-            <li>Participated in the CAD design of the robotic cars</li>
-            <li>Collaborated with other software and hardware teams to build the robotic systems</li>
-          </ul>
-        </div>
-      </div>
-     <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
-        <img 
-          src="/portfolio-website/CAD.png" 
-          alt="CAD Design" 
-          style={{ 
-            width: '700px', 
-            height: '300px', 
-            borderRadius: '10px'
-          }} 
-        /> 
-      </div> 
-      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
-        <img 
-          src="/portfolio-website/Construction.png" 
-          alt="Construction" 
-          style={{ 
-            width: '700px', 
-            height: '400px', 
-            borderRadius: '10px'
-          }} 
-        /> 
-      </div> 
-      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
-        <img 
-          src="/portfolio-website/Robomaster.jpg" 
-          alt="Robomaster" 
-          style={{ 
-            width: '700px', 
-            height: '400px', 
-            borderRadius: '10px'
-          }} 
-        /> 
-      </div> 
 
-    </Layout>
+      {/* Title + Arrow */}
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '6px',
+          marginTop: '16px',
+          fontWeight: 600,
+          fontSize: '16px',
+          color: '#1a1a1a',
+        }}
+      >
+        <span>{title}</span>
+        <svg
+          style={{
+            width: '14px',
+            height: '14px',
+            stroke: 'currentColor',
+            fill: 'none',
+            strokeWidth: 2.4,
+            strokeLinecap: 'round',
+            strokeLinejoin: 'round',
+            transition: 'all 0.2s ease-out',
+            transform: hovered ? 'translate(2px, -2px)' : 'translate(-1px, 1px)',
+          }}
+          viewBox="0 0 13 15"
+        >
+          <g>
+            <polyline
+              style={{
+                transition: 'all 0.2s ease-out',
+                opacity: hovered ? 1 : 0,
+              }}
+              points="5.33 0 10.83 5.5 5.33 11"
+            />
+            <line
+              style={{
+                transition: 'all 0.2s ease-out',
+                transform: hovered ? 'translateX(0)' : 'translateX(-4px)',
+                opacity: hovered ? 1 : 0,
+              }}
+              x1="10.83"
+              y1="5.5"
+              x2="0.83"
+              y2="5.17"
+            />
+          </g>
+        </svg>
+      </div>
+
+      {/* Description */}
+      <p
+        style={{
+          margin: '4px 0 0',
+          fontSize: '14px',
+          color: '#666',
+          lineHeight: '1.4',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          whiteSpace: 'nowrap',
+        }}
+      >
+        {description}
+      </p>
+    </div>
   );
 }
 
-function Research() {
+const projectItems = [
+  {
+    id: 'weather-chatbot',
+    title: 'AI Weather Forecaster Chatbot',
+    description: 'RAG chatbot using Firebase, MongoDB, PineCone, and Deepseek V4-flash for weather and visibility prediction queries.',
+    href: '#!',
+    image: '/portfolio-website/Squid.png',
+    fullDescription: 'Built an AI-powered weather forecasting chatbot for the Hong Kong Observatory (HKO) that answers queries about weather conditions and visibility predictions using a Retrieval-Augmented Generation (RAG) architecture.',
+    details: [
+      'Developed a RAG chatbot using Firebase for web hosting and backend infrastructure',
+      'Used MongoDB for structured SQL queries and PineCone for vector embeddings similarity search',
+      'Integrated Deepseek V4-flash as the base LLM model for natural language understanding',
+      'Used pytesseract for OCR, whisper for transcription, and other Python tools to extract text from Word, PowerPoint, and PDF files',
+      'Code generation assisted by OpenClaw for rapid development',
+    ],
+    tech: ['Firebase', 'MongoDB', 'PineCone', 'Deepseek V4', 'Python', 'RAG', 'agent tool-calling','LLM-wiki'],
+    role: 'Website Developer Intern',
+    period: '2026 Jan - July',
+    gallery: [
+      { src: '/portfolio-website/Squid.png', width: 800, height: 640, alt: 'Weather Chatbot Interface' },
+      { src: '/portfolio-website/Squid2.png', width: 800, height: 640, alt: 'Upload Interface' },
+      { src: '/portfolio-website/Squid3.png', width: 800, height: 400, alt: 'Upload Interface' },
+    ],
+  },
+  {
+    id: 'robomaster',
+    title: 'RoboMaster Robotics Team',
+    description: 'Champion team member for CAD design of robotic cars, collaborating with software and hardware teams at HKUST.',
+    href: '#!',
+    image: '/portfolio-website/CAD.png',
+    fullDescription: 'Joined the HKUST RoboMaster robotics team as a member specializing in CAD design for competitive robotic systems. Contributed to building and optimizing the mechanical design of robotic cars used in national-level competitions.',
+    details: [
+      'Joined as a member of the robotics team called RoboMaster',
+      'Champion team for the selection process of the team members',
+      'Participated in the CAD design of the robotic cars',
+      'Collaborated with other software and hardware teams to build the robotic systems',
+    ],
+    tech: ['CAD Design', 'SolidWorks', 'Robotics', 'Mechanical Engineering','Budget Control'],
+    role: 'Robotics Team Member',
+    period: '2022 - 2023',
+    gallery: [
+      { src: '/portfolio-website/CAD.png', width: 700, height: 300, alt: 'CAD Design of Robotic Car' },
+      { src: '/portfolio-website/Robomaster.jpg', width: 700, height: 400, alt: 'RoboMaster Team Photo' },
+    ],
+  },
+  {
+    id: 'robotic-swarms',
+    title: 'Robotic Swarms Simulation via Reinforcement Learning',
+    description: 'Simulating collective motion of robotic swarms using multi-agent reinforcement learning.',
+    href: '#!',
+    image: '/portfolio-website/col.png',
+    fullDescription: 'Trained a supervised multi-agent reinforcement learning model based on zebrafish behavioral video data to simulate collective motion in robotic swarms. Collaborated with robotics engineers to develop a physical robotic fish that applies the learned model.',
+    details: [
+      'Trained a supervised multi-agent reinforcement learning model based on zebrafish video data',
+      'Collaborated with the robotics engineering department to develop a robotic fish that applies the machine learning model',
+      'Secured funding from the Undergraduate Research Opportunities Program (UROP) to support the research project',
+    ],
+    tech: ['Reinforcement Learning', 'Multi-Agent Systems', 'Robotics', 'Computer Vision', 'Python'],
+    role: 'Research Assistant',
+    period: '2025 - 2026',
+    gallery: [
+      { src: '/portfolio-website/collective.png', width: 800, height: 200, alt: 'Zebrafish Collective Behavior Data' },
+   { src: '/portfolio-website/fish.png', width: 300, height: 200, alt: 'Robotic fish' },
+    ],
+  },
+];
+
+function Projects() {
   return (
-    <Layout title="Research">
-      <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-        <div style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', borderRadius: '15px', padding: '30px', marginBottom: '20px', boxShadow: '0 8px 32px rgba(102, 126, 234, 0.3)' }}>
-          <h2 style={{ color: '#ffffff', fontSize: '2em', marginBottom: '10px' }}>Generalizable Single-view 3D Head Avatar Generation System</h2>
-          <p style={{ color: '#e8eaff', fontWeight: 'bold', marginBottom: '15px' }}>2025 - Present</p>
-          <p style={{ color: '#d1d5ff', fontWeight: 'bold', marginBottom: '10px' }}>Supervisor: Professor Dan Xu</p>
-          <ul style={{ textAlign: 'left', color: '#ffffff', fontSize: '1.1em', lineHeight: '1.6', marginBottom: '20px' }}>
-            <li>Generating a 3D Gaussian head based on a single 2D image and enabling facial feature editing</li>
-            <li>Achieving better generalization speed and 3D consistency than state-of-the-art models such as GOAE and GAGA-avatar</li>
-            <li>Using Gaussian splatting and GANs to construct an animatable talking head</li>
-          </ul>
-        </div>
+    <Layout title="Projects">
+      <p
+        style={{
+          maxWidth: '700px',
+          margin: '0 auto 32px',
+          fontSize: '15px',
+          color: '#666',
+          lineHeight: '1.6',
+        }}
+      >
+        Here are some of the projects I've been working on. I enjoy creating new things and coming up with new ideas.
+      </p>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
+          gap: '24px',
+          maxWidth: '1100px',
+          margin: '0 auto',
+        }}
+      >
+        {projectItems.map((item, i) => (
+          <ProjectsCard
+            key={i}
+            id={item.id}
+            image={item.image}
+            title={item.title}
+            description={item.description}
+          />
+        ))}
       </div>
-       <img 
-            src="/portfolio-website/gs.gif" 
-            alt="Berry Phase" 
-            style={{ 
-              width: '200px', 
-              height: '300px', 
-              borderRadius: '10px'
-            }} 
-          /> 
-     
-      <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-        <div style={{ background: 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)', borderRadius: '15px', padding: '30px', marginBottom: '20px', boxShadow: '0 8px 32px rgba(17, 153, 142, 0.3)' }}>
-          <h2 style={{ color: '#ffffff', fontSize: '2em', marginBottom: '10px' }}>Moiré Graphene</h2>
-          <p style={{ color: '#d4edda', fontWeight: 'bold', marginBottom: '15px' }}>2025 - Present</p>
-          <p style={{ color: '#c3f7d0', fontWeight: 'bold', marginBottom: '10px' }}>Supervisor: Professor Liu Junwei</p>
-          <ul style={{ textAlign: 'left', color: '#ffffff', fontSize: '1.1em', lineHeight: '1.6', marginBottom: '20px' }}>
-            <li>Studying the conductivity of moiré graphene under different twist angles</li>
-            <li>Using tight binding models to simulate the band structure of moiré graphene under different twist angles</li>
-            <li>Using the Kubo-Bastin formula to calculate the conductivity of moiré graphene under different twist angles</li>
-            <li>Use Kernal Polynomial Method (KPM) to speed up the calculation of conductivity</li>
-            <li>Using multiprocessing libraries such as Ray and OpenMP to speed up the simulation</li>
-            <li>Using GPU acceleration libraries such as CuPy to speed up the simulation</li>
-          </ul>
-        </div>
-      </div>
-            **/
-       <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-        <div style={{ background: 'linear-gradient(135deg, #ff6b6b 0%, #ffa500 100%)', borderRadius: '15px', padding: '30px', marginBottom: '20px', boxShadow: '0 8px 32px rgba(255, 107, 107, 0.3)' }}>
-          <h2 style={{ color: '#ffffff', fontSize: '2em', marginBottom: '10px' }}>Physics-guided data-driven modeling to understand complex phenomena and to solve real-world problems</h2>
-          <p style={{ color: '#fff2e6', fontWeight: 'bold', marginBottom: '15px' }}>2025 - 2026</p>
-          <p style={{ color: '#ffe0cc', fontWeight: 'bold', marginBottom: '10px' }}>Supervisor: Professor Zhang Rui, Professor Li Sai Ping</p>
-          <ul style={{ textAlign: 'left', color: '#ffffff', fontSize: '1.1em', lineHeight: '1.6', marginBottom: '20px' }}>
-            <li>Trained a supervised multi-agent reinforcement learning model based on zebrafish video data</li>
-            <li>Collaborated with the robotics engineering department to develop a robotic fish that applies the machine learning model</li>
-            <li>Secured funding from the Undergraduate Research Opportunities Program (UROP) to support the research project</li>
-          </ul>
-         
-        </div>
-
-      </div> 
-      
-       <img 
-            src="/portfolio-website/collective.png" 
-            alt="Berry Phase" 
-            style={{ 
-              width: '800px', 
-              height: '200px', 
-              borderRadius: '10px'
-            }} 
-          /> 
-        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-        <div style={{ background: 'linear-gradient(135deg, #2c3e50 0%, #3498db 100%)', borderRadius: '15px', padding: '30px', marginBottom: '20px', boxShadow: '0 8px 32px rgba(52, 152, 219, 0.3)' }}>
-          <h2 style={{ color: '#ffffff', fontSize: '2em', marginBottom: '10px' }}>Diffusion of Nanoparticles in a Potential Landscape</h2>
-          <p style={{ color: '#d6eaf8', fontWeight: 'bold', marginBottom: '15px' }}>2025 - 2026</p>
-          <p style={{ color: '#aed6f1', fontWeight: 'bold', marginBottom: '10px' }}>Supervisor: Professor Michael Kwok Yee WONG</p>
-          <ul style={{ textAlign: 'left', color: '#ffffff', fontSize: '1.1em', lineHeight: '1.6', marginBottom: '20px' }}>
-            <li>Modelled the energy landscape in postsynaptic terminals due to interactions with proteins</li>
-            <li>Simulated the mixed diffusion of proteins around potential wells and geometric wells using the Gillespie algorithm and Monte Carlo algorithm</li>
-            <li>The paper is currently under peer review for publication in Physical Review Letters</li>
-          </ul>
-         
-        </div>
-      </div>
-       
-      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
-        <img 
-          src="/portfolio-website/diffusion.png" 
-          alt="Diffusion Simulation 1" 
-          style={{ 
-            width: '700px', 
-            height: '300px', 
-            borderRadius: '10px'
-          }} 
-        /> 
-      </div>
-      
-      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
-        <img 
-          src="/portfolio-website/diffusion2.jpeg" 
-          alt="Diffusion Simulation 2" 
-          style={{ 
-            width: '700px', 
-            height: '300px', 
-            borderRadius: '10px'
-          }} 
-        /> 
-      </div> 
-    
-       <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-        <div style={{ background: 'linear-gradient(135deg, #8e44ad 0%, #e74c3c 100%)', borderRadius: '15px', padding: '30px', marginBottom: '20px', boxShadow: '0 8px 32px rgba(142, 68, 173, 0.3)' }}>
-          <h2 style={{ color: '#ffffff', fontSize: '2em', marginBottom: '10px' }}>Theoretical modeling of energy wall</h2>
-          <p style={{ color: '#f8d7da', fontWeight: 'bold', marginBottom: '15px' }}>2025 - 2026</p>
-          <p style={{ color: '#f1c2c3', fontWeight: 'bold', marginBottom: '10px' }}>Supervisor: Professor Hyokeun Park</p>
-          <ul style={{ textAlign: 'left', color: '#ffffff', fontSize: '1.1em', lineHeight: '1.6', marginBottom: '20px' }}>
-            <li>This project is in collaboration with the Diffusion of Nanoparticles in a Potential Landscape, but it is more focused on the experimental data collection</li>
-            <li>Analyzed the experimental data using OpenCV and ImageJ for particle tracking</li>
-          </ul>
-        </div>
-      </div>
-      
-
     </Layout>
   );
 }
 
 function Awards() {
+  const awards = [
+    {
+      emoji: '🎓',
+      title: 'First Honor Graduate',
+      institution: 'HKUST',
+      detail: 'CGA: 3.82 / 4.3 · MCGA: 3.90 / 4.3',
+      color: '#6c5ce7',
+    },
+    {
+      emoji: '🏆',
+      title: 'Champion Team',
+      institution: 'RoboMaster Team Selection',
+      detail: 'Top team in the competitive selection process',
+      color: '#00b894',
+    },
+    {
+      emoji: '💰',
+      title: 'UROP Research Funding',
+      institution: 'HKUST Undergraduate Research Opportunities Program',
+      detail: 'Secured funding for multi-agent RL research on robotic swarms',
+      color: '#0984e3',
+    },
+    {
+      emoji: '🥉',
+      title: '38th Chinese Physics Olympiad',
+      institution: 'Bronze Medal',
+      detail: 'National-level physics competition',
+      color: '#e17055',
+    },
+  ];
+
   return (
     <Layout title="Awards">
-      <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-        <div style={{ background: 'linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%)', borderRadius: '15px', padding: '25px', marginBottom: '20px', boxShadow: '0 8px 32px rgba(162, 155, 254, 0.3)' }}>
-          <h3 style={{ color: '#ffffff', fontSize: '1.5em', marginBottom: '10px' }}>Dean's List</h3>
-          <p style={{ color: '#ddd6fe', fontWeight: 'bold', marginBottom: '5px' }}>HKUST</p>
-          <p style={{ color: '#c4b5fd', fontWeight: 'bold', marginBottom: '15px' }}>Year 2-3 Fall and Spring</p>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
+          gap: '20px',
+          maxWidth: '1000px',
+          margin: '0 auto',
+        }}
+      >
+        {awards.map((award, i) => (
+          <div
+            key={i}
+            style={{
+              background: `linear-gradient(135deg, ${award.color} 0%, ${award.color}dd 100%)`,
+              borderRadius: '16px',
+              padding: '28px',
+              color: '#fff',
+              textAlign: 'center',
+              boxShadow: `0 6px 24px ${award.color}33`,
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              cursor: 'default',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-4px)';
+              e.currentTarget.style.boxShadow = `0 12px 36px ${award.color}55`;
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = `0 6px 24px ${award.color}33`;
+            }}
+          >
+            <div style={{ fontSize: '3em', marginBottom: '12px' }}>{award.emoji}</div>
+            <h3 style={{ fontSize: '1.3em', fontWeight: 700, margin: '0 0 6px', color: '#fff' }}>
+              {award.title}
+            </h3>
+            <p style={{ fontSize: '0.9em', opacity: 0.85, fontWeight: 500, margin: '0 0 8px' }}>
+              {award.institution}
+            </p>
+            <p style={{ fontSize: '0.85em', opacity: 0.7, margin: 0, lineHeight: '1.4' }}>
+              {award.detail}
+            </p>
+          </div>
+        ))}
+      </div>
+    </Layout>
+  );
+}
+
+function ProjectDetail() {
+  const { id } = useParams();
+  const galleryRef = React.useRef(null);
+  const activeIndexRef = React.useRef(0);
+  const [activeIndex, setActiveIndex] = React.useState(0);
+
+  const project = projectItems.find((p) => p.id === id);
+
+  const handleGalleryScroll = React.useCallback(() => {
+    const el = galleryRef.current;
+    if (!el || !project?.gallery) return;
+    const imgs = el.children;
+    const center = el.scrollLeft + el.clientWidth / 2;
+    let closest = 0;
+    let minDist = Infinity;
+    for (let i = 0; i < imgs.length; i++) {
+      const imgEl = imgs[i];
+      const imgCenter = imgEl.offsetLeft + imgEl.offsetWidth / 2;
+      const dist = Math.abs(center - imgCenter);
+      if (dist < minDist) {
+        minDist = dist;
+        closest = i;
+      }
+    }
+    if (closest !== activeIndexRef.current) {
+      activeIndexRef.current = closest;
+      setActiveIndex(closest);
+    }
+  }, [project?.gallery]);
+
+  const snapToImage = React.useCallback((index) => {
+    const el = galleryRef.current;
+    if (!el || !el.children[index]) return;
+    const img = el.children[index];
+    el.scrollTo({
+      left: img.offsetLeft - el.clientWidth / 2 + img.offsetWidth / 2,
+      behavior: 'smooth',
+    });
+    activeIndexRef.current = index;
+    setActiveIndex(index);
+  }, []);
+
+  if (!project) {
+    return (
+      <Layout title="Project Not Found">
+        <p style={{ color: '#999', fontSize: '18px' }}>
+          The project you're looking for doesn't exist.{' '}
+          <Link to="/projects" style={{ color: '#278405', textDecoration: 'underline' }}>
+            Back to Projects
+          </Link>
+        </p>
+      </Layout>
+    );
+  }
+
+  return (
+    <Layout title={project.title}>
+      <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'left' }}>
+
+        {/* Back button */}
+        <Link
+          to="/projects"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            color: '#666',
+            textDecoration: 'none',
+            fontSize: '15px',
+            fontWeight: 500,
+            marginBottom: '24px',
+            transition: 'color 0.2s',
+          }}
+          onMouseEnter={(e) => (e.target.style.color = '#278405')}
+          onMouseLeave={(e) => (e.target.style.color = '#666')}
+        >
+          ← Back to Projects
+        </Link>
+
+        {/* Snap-scroll Gallery with Dots */}
+        <div style={{ position: 'relative', marginBottom: '32px' }}>
+          <style>{`
+            .gallery-scroll::-webkit-scrollbar { display: none; }
+            .gallery-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+          `}</style>
+          <div
+            ref={galleryRef}
+            onScroll={handleGalleryScroll}
+            className="gallery-scroll"
+            style={{
+              width: '100%',
+              overflowX: 'auto',
+              overflowY: 'hidden',
+              whiteSpace: 'nowrap',
+              display: 'flex',
+              gap: '16px',
+              borderRadius: '16px',
+              scrollSnapType: 'x mandatory',
+              WebkitOverflowScrolling: 'touch',
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none',
+              paddingBottom: '4px',
+            }}
+          >
+            {project.gallery?.map((img, i) => (
+              <div
+                key={i}
+                style={{
+                  scrollSnapAlign: 'center',
+                  flexShrink: 0,
+                }}
+              >
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  style={{
+                    width: img.width + 'px',
+                    height: img.height + 'px',
+                    objectFit: 'cover',
+                    borderRadius: '12px',
+                    border: '1px solid #e5e7eb',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+                    display: 'block',
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+
+          {/* Dots */}
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              gap: '8px',
+              marginTop: '14px',
+            }}
+          >
+            {project.gallery?.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => snapToImage(i)}
+                style={{
+                  width: '10px',
+                  height: '10px',
+                  borderRadius: '50%',
+                  border: 'none',
+                  padding: 0,
+                  cursor: 'pointer',
+                  background: activeIndex === i ? '#333' : '#d1d5db',
+                  transition: 'background 0.3s ease',
+                }}
+              />
+            ))}
+          </div>
         </div>
-        
-        <div style={{ background: 'linear-gradient(135deg, #00b894 0%, #00cec9 100%)', borderRadius: '15px', padding: '30px', color: 'white', boxShadow: '0 8px 32px rgba(0, 184, 148, 0.3)' }}>
-          <h2 style={{ fontSize: '2em', marginBottom: '25px', textAlign: 'center', color: '#ffffff' }}>38th Chinese Physics Olympiad - Bronze Medal</h2>
+
+        {/* Role + Period */}
+        <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap', marginBottom: '20px' }}>
+          <span style={{ fontSize: '14px', color: '#666', background: '#f3f4f6', padding: '6px 14px', borderRadius: '20px', fontWeight: 500 }}>
+            {project.role}
+          </span>
+          <span style={{ fontSize: '14px', color: '#666', background: '#f3f4f6', padding: '6px 14px', borderRadius: '20px', fontWeight: 500 }}>
+            {project.period}
+          </span>
+        </div>
+
+        {/* Full Description */}
+        <p style={{ fontSize: '16px', lineHeight: '1.7', color: '#444', marginBottom: '28px' }}>
+          {project.fullDescription}
+        </p>
+
+        {/* Details */}
+        <h3 style={{ fontSize: '20px', fontWeight: 700, color: '#1a1a1a', marginBottom: '16px' }}>
+          Key Details
+        </h3>
+        <ul style={{ paddingLeft: '20px', fontSize: '15px', lineHeight: '1.8', color: '#555', marginBottom: '28px' }}>
+          {project.details.map((d, i) => (
+            <li key={i} style={{ marginBottom: '6px' }}>{d}</li>
+          ))}
+        </ul>
+
+        {/* Tech Stack */}
+        <h3 style={{ fontSize: '20px', fontWeight: 700, color: '#1a1a1a', marginBottom: '14px' }}>
+          Technologies
+        </h3>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginBottom: '32px' }}>
+          {project.tech.map((t, i) => (
+            <span
+              key={i}
+              style={{
+                fontSize: '13px',
+                fontWeight: 500,
+                color: '#1a1a1a',
+                background: '#f0f0f0',
+                border: '1px solid #e0e0e0',
+                padding: '6px 14px',
+                borderRadius: '20px',
+              }}
+            >
+              {t}
+            </span>
+          ))}
         </div>
       </div>
     </Layout>
@@ -445,8 +936,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/education" element={<Education />} />
-            <Route path="/work-experience" element={<WorkExperience />} />
-            <Route path="/research" element={<Research />} />
+            <Route path="/about-me" element={<AboutMe />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/projects/:id" element={<ProjectDetail />} />
             <Route path="/awards" element={<Awards />} />
           </Routes>
         </main>
