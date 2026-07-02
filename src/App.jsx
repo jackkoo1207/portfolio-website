@@ -604,7 +604,7 @@ const projectItems = [
     role: 'Research Assistant',
     period: '2025 - 2026',
     gallery: [
-      { src: '/portfolio-website/collective.png', width: 800, height: 200, alt: 'Zebrafish Collective Behavior Data' },
+      { src: '/portfolio-website/collective.png', width: 700, height: 200, alt: 'Zebrafish Collective Behavior Data' },
    { src: '/portfolio-website/fish.png', width: 300, height: 200, alt: 'Robotic fish' },
     ],
   },
@@ -731,45 +731,14 @@ function Awards() {
 
 function ProjectDetail() {
   const { id } = useParams();
-  const galleryRef = React.useRef(null);
-  const activeIndexRef = React.useRef(0);
   const [activeIndex, setActiveIndex] = React.useState(0);
 
   const project = projectItems.find((p) => p.id === id);
 
-  const handleGalleryScroll = React.useCallback(() => {
-    const el = galleryRef.current;
-    if (!el || !project?.gallery) return;
-    const imgs = el.children;
-    const center = el.scrollLeft + el.clientWidth / 2;
-    let closest = 0;
-    let minDist = Infinity;
-    for (let i = 0; i < imgs.length; i++) {
-      const imgEl = imgs[i];
-      const imgCenter = imgEl.offsetLeft + imgEl.offsetWidth / 2;
-      const dist = Math.abs(center - imgCenter);
-      if (dist < minDist) {
-        minDist = dist;
-        closest = i;
-      }
-    }
-    if (closest !== activeIndexRef.current) {
-      activeIndexRef.current = closest;
-      setActiveIndex(closest);
-    }
+  const goTo = React.useCallback((index) => {
+    if (!project?.gallery) return;
+    setActiveIndex((index + project.gallery.length) % project.gallery.length);
   }, [project?.gallery]);
-
-  const snapToImage = React.useCallback((index) => {
-    const el = galleryRef.current;
-    if (!el || !el.children[index]) return;
-    const img = el.children[index];
-    el.scrollTo({
-      left: img.offsetLeft - el.clientWidth / 2 + img.offsetWidth / 2,
-      behavior: 'smooth',
-    });
-    activeIndexRef.current = index;
-    setActiveIndex(index);
-  }, []);
 
   if (!project) {
     return (
@@ -808,54 +777,106 @@ function ProjectDetail() {
           ← Back to Projects
         </Link>
 
-        {/* Snap-scroll Gallery with Dots */}
-        <div style={{ position: 'relative', marginBottom: '32px' }}>
-          <style>{`
-            .gallery-scroll::-webkit-scrollbar { display: none; }
-            .gallery-scroll { -ms-overflow-style: none; scrollbar-width: none; }
-          `}</style>
+        {/* Arrow Carousel Gallery */}
+        <div style={{ position: 'relative', marginBottom: '32px', userSelect: 'none' }}>
           <div
-            ref={galleryRef}
-            onScroll={handleGalleryScroll}
-            className="gallery-scroll"
             style={{
+              position: 'relative',
               width: '100%',
-              overflowX: 'auto',
-              overflowY: 'hidden',
-              whiteSpace: 'nowrap',
+              height: '420px',
               display: 'flex',
-              gap: '16px',
-              borderRadius: '16px',
-              scrollSnapType: 'x mandatory',
-              WebkitOverflowScrolling: 'touch',
-              scrollbarWidth: 'none',
-              msOverflowStyle: 'none',
-              paddingBottom: '4px',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
           >
-            {project.gallery?.map((img, i) => (
-              <div
-                key={i}
-                style={{
-                  scrollSnapAlign: 'center',
-                  flexShrink: 0,
-                }}
-              >
+            {project.gallery?.map((img, i) => {
+              const diff = (i - activeIndex + project.gallery.length) % project.gallery.length;
+              const offset = diff > project.gallery.length / 2 ? diff - project.gallery.length : diff;
+              const isActive = offset === 0;
+              const abs = Math.abs(offset);
+
+              return (
                 <img
+                  key={i}
                   src={img.src}
                   alt={img.alt}
+                  onClick={() => goTo(i)}
                   style={{
-                    width: img.width + 'px',
-                    height: img.height + 'px',
-                    objectFit: 'cover',
+                    position: 'absolute',
+                    width: '100%',
+                    height: '100%',
+                    objectFit: isActive ? 'contain' : 'cover',
                     borderRadius: '12px',
-                    border: '1px solid #e5e7eb',
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
-                    display: 'block',
+                    cursor: isActive ? 'default' : 'pointer',
+                    transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
+                    transform: `translateX(${offset * 110}px) scale(${isActive ? 1 : 0.7})`,
+                    opacity: isActive ? 1 : abs === 1 ? 0.5 : 0,
+                    zIndex: isActive ? 10 : abs === 1 ? 5 : 0,
+                    filter: isActive ? 'none' : 'grayscale(40%)',
                   }}
                 />
-              </div>
-            ))}
+              );
+            })}
+
+            {/* Left Arrow */}
+            <button
+              onClick={() => goTo(activeIndex - 1)}
+              style={{
+                position: 'absolute',
+                left: '8px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                zIndex: 20,
+                width: '40px',
+                height: '40px',
+                borderRadius: '50%',
+                border: 'none',
+                background: 'rgba(255,255,255,0.85)',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '20px',
+                fontWeight: 700,
+                color: '#333',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+                transition: 'background 0.2s, transform 0.2s',
+              }}
+              onMouseEnter={(e) => { e.target.style.background = '#fff'; e.target.style.transform = 'translateY(-50%) scale(1.1)'; }}
+              onMouseLeave={(e) => { e.target.style.background = 'rgba(255,255,255,0.85)'; e.target.style.transform = 'translateY(-50%)'; }}
+            >
+              ‹
+            </button>
+
+            {/* Right Arrow */}
+            <button
+              onClick={() => goTo(activeIndex + 1)}
+              style={{
+                position: 'absolute',
+                right: '8px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                zIndex: 20,
+                width: '40px',
+                height: '40px',
+                borderRadius: '50%',
+                border: 'none',
+                background: 'rgba(255,255,255,0.85)',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '20px',
+                fontWeight: 700,
+                color: '#333',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
+                transition: 'background 0.2s, transform 0.2s',
+              }}
+              onMouseEnter={(e) => { e.target.style.background = '#fff'; e.target.style.transform = 'translateY(-50%) scale(1.1)'; }}
+              onMouseLeave={(e) => { e.target.style.background = 'rgba(255,255,255,0.85)'; e.target.style.transform = 'translateY(-50%)'; }}
+            >
+              ›
+            </button>
           </div>
 
           {/* Dots */}
@@ -870,7 +891,7 @@ function ProjectDetail() {
             {project.gallery?.map((_, i) => (
               <button
                 key={i}
-                onClick={() => snapToImage(i)}
+                onClick={() => goTo(i)}
                 style={{
                   width: '10px',
                   height: '10px',
